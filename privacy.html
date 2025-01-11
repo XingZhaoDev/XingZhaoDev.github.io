@@ -21,8 +21,9 @@
     <script>
         function copyAndRedirect() {
             // Copy the URL to the clipboard
-            navigator.clipboard.writeText(window.location.search.substring(5)).then(() => {
-                console.log('URL copied to clipboard.');
+            const copiedUrl = window.location.search;
+            navigator.clipboard.writeText(copiedUrl).then(() => {
+                console.log('URL copied to clipboard: ' + copiedUrl);
             }).catch(err => {
                 console.error('Failed to copy: ', err);
                 alert("failed to copy");

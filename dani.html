@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: #0366d6;
+        }
+    </style>
+    <script>
+        function applink() {
+            var target = "theogdani";
+         
+            if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+                var deeplinkURL =  "c2live://livestream/c2_id=" + target;
+                var appstorefail = "itms-apps://itunes.apple.com/app/id6520394603";
+            navigator.clipboard.writeText(copiedUrl).then(() => {
+                console.log('URL copied to clipboard: ' + deeplinkURL);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert("failed to copy");
+            });
+                //document.write(deeplinkURL);
+                var clickedAt = +new Date;
+                // During tests on 3g/3gs this timeout fires immediately if less than 500ms.
+                setTimeout(function(){
+                    // To avoid failing on return to MobileSafari, ensure freshness!
+                    if (+new Date - clickedAt < 2000){
+                        window.location = appstorefail;
+                    }
+                }, 1500);
+                window.location = deeplinkURL;
+            }  
+            else if( /Android/i.test(navigator.userAgent) ) {
+                var deeplinkURL = "c2live://livestream/c2_id=" + target;
+                var appstorefail = "https://play.google.com/store/apps/details?id=4974955363432749570&referrer=utm_source=website&utm_medium=organic&utm_campaign=website_home";
+               
+                //document.write(deeplinkURL);
+                var clickedAt = +new Date;
+                // During tests on 3g/3gs this timeout fires immediately if less than 500ms.
+                setTimeout(function(){
+                    // To avoid failing on return to MobileSafari, ensure freshness!
+                    if (+new Date - clickedAt < 2000){
+                        window.location = appstorefail;
+                    }
+                }, 1500);
+                window.location = deeplinkURL;
+            }
+            else {
+                var deeplinkURL = "http://www.c2live.co";
+                window.location = deeplinkURL;
+            }
+        }
+        function copyToClipboard() {
+            const copiedUrl = "https://watch.c2live.co/TheOGDani"; // window.location.href
+            navigator.clipboard.writeText(copiedUrl).then(() => {
+                console.log('URL copied to clipboard: ' + copiedUrl);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert("failed to copy");
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>C2Live show</h1>
+    <p>Go to wath Dani's show</p>
+    <button id="myButton" onclick="applink()">Watch Now</button>
+</body>
+</html>
+   
+

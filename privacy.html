@@ -19,7 +19,7 @@
         }
     </style>
     <script>
-        function copyAndRedirect() {
+        function copyToClipboard() {
             // Copy the URL to the clipboard
             const copiedUrl = window.location.search;
             navigator.clipboard.writeText(copiedUrl).then(() => {
@@ -28,21 +28,15 @@
                 console.error('Failed to copy: ', err);
                 alert("failed to copy");
             });
-
-            // Redirect to the actual URL
-            const params = new URLSearchParams(window.location.search);
-            const targetUrl = params.get('url');
-            if (targetUrl) {
-                window.location.href = targetUrl;
-            }
         }
     </script>
 </head>
-<body onload="copyAndRedirect()">
+<body>
     <h1>Privacy Policy</h1>
     <p>Welcome to our Privacy Policy page. Your privacy is critically important to us.</p>
     <p>This is where you can describe how you handle user data and comply with privacy regulations.</p>
     <p>If you have any questions, feel free to contact us at <a href="mailto:support@example.com">support@example.com</a>.</p>
     <p><a href="index.html">Back to Home</a></p>
+    <button id="myButton" onclick="copyToClipboard()">Go to App</button>
 </body>
 </html>

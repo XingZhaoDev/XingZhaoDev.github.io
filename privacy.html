@@ -18,8 +18,25 @@
             color: #0366d6;
         }
     </style>
+    <script>
+        function copyAndRedirect() {
+            // Copy the URL to the clipboard
+            navigator.clipboard.writeText(window.location.search.substring(5)).then(() => {
+                console.log('URL copied to clipboard.');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+
+            // Redirect to the actual URL
+            const params = new URLSearchParams(window.location.search);
+            const targetUrl = params.get('url');
+            if (targetUrl) {
+                window.location.href = targetUrl;
+            }
+        }
+    </script>
 </head>
-<body>
+<body onload="copyAndRedirect()">
     <h1>Privacy Policy</h1>
     <p>Welcome to our Privacy Policy page. Your privacy is critically important to us.</p>
     <p>This is where you can describe how you handle user data and comply with privacy regulations.</p>

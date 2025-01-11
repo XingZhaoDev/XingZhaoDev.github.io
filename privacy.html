@@ -21,7 +21,7 @@
     <script>
         function copyToClipboard() {
             // Copy the URL to the clipboard
-            const copiedUrl = window.location.search;
+            const copiedUrl = window.location.href;
             navigator.clipboard.writeText(copiedUrl).then(() => {
                 console.log('URL copied to clipboard: ' + copiedUrl);
             }).catch(err => {
